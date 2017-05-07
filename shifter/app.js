@@ -10,40 +10,32 @@ app.get('/', function (req, res) {
     res.send("you've been slashed!");
 });
 
-let search = (termString) => {
-	var options = {
-    	hostname: `www.khanacademy.org`,
-    	port: 443,
-    	path: `/search?page_search_query=${termString}`,
-    	method: 'GET'
-    };
-
-	var req = https.request(options, function(res) {
-	    var output = '';
-	    res.setEncoding('utf8');
-	    res.on('data', function (chunk) {
-	        output += chunk;
-	    });
-	    res.on('end', function() {
-	        let $ = cheerio.load(output);
-	        console.log($());
-	        console.log("Done");
-	    });
-	    // console.log("Connected");
-	});
-	req.on('error', function(err) {
-	    //res.send('error: ' + err.message);
-	    console.log(err);
-	});
-	req.end();
-}
+let searchYoutube = (searchFor, cb) => {
+    var YouTube = require('youtube-node');
+    var youTube = new YouTube();
+    youTube.setKey('AIzaSyAp-hsvkLWCFTwHbEHKm0z8D_DtQcxDJZA');
+    // search youtube for {search_term} with max 5 results
+    youTube.search(searchFor, 2, function(error, result) {
+        if (error) {
+            cb(error, null);
+        } else {
+            let items = result.items;
+            let vidIDs = [];
+            for (let i = 0; i < items.length; i++) {
+                vidIDs.push(items[i].id.videoId);
+            }
+            cb(null, vidIDs);
+        }
+    });
+};
 
 app.get('/input/:input', function (req, res) {
     if (req.params.input !== undefined) {
         input = req.params.input;
-        console.log("About to search");
-        search(input);
-        res.end(input);
+        searchYoutube(input, (err, resres) => {
+            res.end(JSON.stringify(resres));
+        });
+        // search(input);
         // request(`http://www.khanacademy.org/search?page_search_query=${input}`, (error, response, body) => {
         // 	$ = cheerio.load(body);
         // 	console.log($('.gs-title.external-link'));
