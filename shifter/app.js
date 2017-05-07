@@ -15,12 +15,11 @@ var nlu = new NaturalLanguageUnderstandingV1({
 });
 // var https = require('https');
 var app = express();
+const PORT = 8888;
 
 app.get('/', function (req, res) {
     res.send("you've been slashed!");
 });
-
-
 
 let searchYoutube = (searchFor, cb) => {
     var YouTube = require('youtube-node');
@@ -37,6 +36,10 @@ let searchYoutube = (searchFor, cb) => {
 
             async.map(items, function(item, asyncBack) {
                 let vidKey = item.id.videoId;
+                let display = {
+                    'title': item.snippet.title,
+                    'description': item.snippet.description
+                };
                 
 
                 request(`http://video.google.com/timedtext?lang=en&v=${vidKey}`, function (error, response, body) {
@@ -63,7 +66,7 @@ let searchYoutube = (searchFor, cb) => {
 
                                 parseBack(null, rect);
                             }, (err, parseResults) => {
-                                asyncBack(null, {key: vidKey, value: parseResults});
+                                asyncBack(null, {key: vidKey, browser: display, value: parseResults});
                             });
                         });
                     }
@@ -106,24 +109,41 @@ let watsonify = (text, cb) => {
     });
 }
 
+app.get('/concept/:concepts', (req, res) => {
+    let inputs = req.params.concepts.split('zzzzz');
+    async.map(inputs, function(item, conceptBack) {
+        searchYoutube(item, (youmeErr, youmeRes) => {
+            conceptBack(youmeErr, youmeRes);
+        })
+    }, (err, conceptResults) => {
+        let out = [];
+        for (let i = 0; i < conceptResults.length; i++) {
+            for (let j = 0; j < conceptResults[i].length; j++) {
+                out.push(conceptResults[i][j]);
+            }
+        }
+        res.end(JSON.stringify(out));
+    });
+})
+
 app.get('/input/:input', function (req, res) {
     if (req.params.input !== undefined) {
         let input = req.params.input;
         let watsonInput = entities.decode(input);
         console.log(watsonInput);
 
-        watsonify(watsonInput, (watsonErr, watsonRes) => {
-            if (watsonErr) {
-                console.error(watsonErr);
-                res.end("Sorry. Stuff happens");
-            } else {
-                res.end(watsonRes);
-            }
-        });
-
-        // searchYoutube(input, (err, resres) => {
-        //     res.end(JSON.stringify(resres));
+        // watsonify(watsonInput, (watsonErr, watsonRes) => {
+        //     if (watsonErr) {
+        //         console.error(watsonErr);
+        //         res.end("Sorry. Stuff happens");
+        //     } else {
+        //         res.end(watsonRes);
+        //     }
         // });
+
+        searchYoutube(input, (err, resres) => {
+            res.end(JSON.stringify(resres));
+        });
 
         // search(input);
         // request(`http://www.khanacademy.org/search?page_search_query=${input}`, (error, response, body) => {
@@ -136,6 +156,6 @@ app.get('/input/:input', function (req, res) {
         // exec(`open http://www.khanacademy.org/search?page_search_query=${input}`);
     }
 });
-app.listen(8080, function () {
-  console.log('Example app listening on port 8080!')
+app.listen(PORT, function () {
+  console.log(`Example app listening on port ${PORT}`);
 });

@@ -87,14 +87,16 @@ text-shadow: 0 1px 0 white;
 }
 
 #header h1 {
-float: left;
-width: 114px;
-height: 22px;
-margin-top: 13px;
-margin-right: 50px;
-overflow: hidden;
-background: url("../img/logo.png");
-text-indent: -9999px;
+    float: left;
+    width: 114px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 50px;
+    /* overflow: hidden; */
+    background: url(../img/quelle.png);
+    background-size: 64px 30px;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
 }
 
 
@@ -157,7 +159,7 @@ color: #8D8C8C;
 color: #ffffff;
 text-decoration: none;
 background-color: red;
-background-image:-moz-linear-gradient(50% 0% -90deg,rgb(91,187,235) 0%,rgb(22,150,200) 100%); 
+background-image:-moz-linear-gradient(50% 0% -90deg,rgb(91,187,235) 0%,rgb(22,150,200) 100%);
 background-image:-webkit-gradient(linear,50% 0%,50% 100%,color-stop(0, rgb(91,187,235)),color-stop(1, rgb(22,150,200)));
 background-image:-webkit-linear-gradient(-90deg,rgb(91,187,235) 0%,rgb(22,150,200) 100%);
 background-image:-o-linear-gradient(-90deg,rgb(91,187,235) 0%,rgb(22,150,200) 100%);
@@ -187,7 +189,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff5bbbeb,endCol
 #info-unit .alert-info {
   font-family: inherit;
   color: #3a87ad;
- background:-moz-linear-gradient(rgba(82,184,235,0) 0%,rgba(82,184,235,0.04) 100%); 
+ background:-moz-linear-gradient(rgba(82,184,235,0) 0%,rgba(82,184,235,0.04) 100%);
 background:-webkit-gradient(linear,color-stop(0, rgba(82,184,235,0)),color-stop(1, rgba(82,184,235,0.04)));
 background:-webkit-linear-gradient(rgba(82,184,235,0) 0%,rgba(82,184,235,0.04) 100%);
 background:-o-linear-gradient(rgba(82,184,235,0) 0%,rgba(82,184,235,0.04) 100%);
@@ -226,16 +228,16 @@ color: #757575;}
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);}
 .pricing-table * { list-style: none; line-height: 1; }
-.pricing-table .title { 
+.pricing-table .title {
 border-bottom: 1px solid rgba(19, 125, 176, 0.28);
 -moz-box-shadow:0px 1px 1px rgba(19,125,176,0.65);
 -webkit-box-shadow:0px 1px 1px rgba(19,125,176,0.65);
 box-shadow:0px 1px 1px rgba(19,125,176,0.65);
 -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#a6137db0,Positive=true)";
 filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#a6137db0,Positive=true);
-background-color: #33ADE8; padding: 15px 20px; text-align: center; 
-color: #FFF; 
-font-weight: 400; 
+background-color: #33ADE8; padding: 15px 20px; text-align: center;
+color: #FFF;
+font-weight: 400;
 font-size: 32px; }
 .pricing-table .price { background-color: #50B9EB; padding: 15px 20px; text-align: center; color: #FFF; font-weight: normal; font-size: 20px; border-top: 1px solid rgba(255, 255, 255, 0.13);}
 .pricing-table .description { background-color: white; padding: 15px; text-align: center; color: #777777; font-size: 12px; font-weight: normal; line-height: 19px; border-bottom: dotted 1px #dddddd; }
@@ -468,7 +470,7 @@ select:active:enabled {background-image: url("data:image/png;base64,iVBORw0KGgoA
 .footer {
   position: relative;
 top: 48px;
- 
+
   padding:  0;
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
@@ -523,4 +525,3 @@ top: 48px;
      -moz-border-radius: 4px 0 4px 0;
           border-radius: 4px 0 4px 0;
 }
-
