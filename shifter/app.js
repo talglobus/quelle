@@ -4,6 +4,15 @@ var exec = require('child_process').exec;
 var cheerio = require('cheerio');
 var async = require('async');
 var parseString = require('xml2js').parseString;
+var fs = require('fs');
+let Entities = require('html-entities').AllHtmlEntities;
+let entities = new Entities();
+var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+var nlu = new NaturalLanguageUnderstandingV1({
+    'username': '4f02c909-d017-4fe2-b2a1-cbf699049bdd',
+    'password': 'uoGUxbgPiRIv',
+    'version_date': '2017-02-27'
+});
 // var https = require('https');
 var app = express();
 
@@ -78,36 +87,44 @@ let searchYoutube = (searchFor, cb) => {
                 }
                 // console.log("Done");
             });
-
-
-            // for (let i = 0; i < items.length; i++) {
-            //     id = items[i].id.videoId;
-                
-            //     request(`http://video.google.com/timedtext?lang=en&v=${id}`, function (error, response, body) {   
-            //         var xml = body;
-            //         var timeArr = [];
-            //         var textArr = [];
-            //         parseString(xml, function (err, result) {
-            //             result["transcript"]["text"].forEach(function(something){
-            //                 textArr.push(something["_"]);
-            //                 timeArr.push(parseInt(something["$"]["start"]) + parseInt(something["$"]["dur"]));
-            //             });
-            //         });
-            //         // pass arrays to front end 
-            //         console.log(textArr);
-            //         console.log(timeArr);
-            //     });
-            // }
         }
     });
 };
 
+let watsonify = (text, cb) => {
+    nlu.analyze({
+      'html': text, // Buffer or String
+      'features': {
+        'concepts': {},
+        'keywords': {},
+      }
+    }, function(err, response) {
+         if (err)
+           cb(err, null);
+         else
+           cb(null, JSON.stringify(response, null, 2));
+    });
+}
+
 app.get('/input/:input', function (req, res) {
     if (req.params.input !== undefined) {
-        input = req.params.input;
-        searchYoutube(input, (err, resres) => {
-            res.end(JSON.stringify(resres));
+        let input = req.params.input;
+        let watsonInput = entities.decode(input);
+        console.log(watsonInput);
+
+        watsonify(watsonInput, (watsonErr, watsonRes) => {
+            if (watsonErr) {
+                console.error(watsonErr);
+                res.end("Sorry. Stuff happens");
+            } else {
+                res.end(watsonRes);
+            }
         });
+
+        // searchYoutube(input, (err, resres) => {
+        //     res.end(JSON.stringify(resres));
+        // });
+
         // search(input);
         // request(`http://www.khanacademy.org/search?page_search_query=${input}`, (error, response, body) => {
         // 	$ = cheerio.load(body);
