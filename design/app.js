@@ -2,6 +2,7 @@
  * Created by tal on 5/7/17.
  */
 var express = require('express');
+var handlebars = require('handlebars');
 var path = require('path');
 var request = require('request');
 var fs = require('fs');
@@ -42,44 +43,41 @@ app.get('/', function (req, res) {
 });
 
 let datify = (req, res, input) => {
-	res.end("boosh");
 
-
-	const FILE = './index.htm';
+	var mainText = fs.readFileSync('./index.html', "utf8");
+	var template = handlebars.compile(mainText);
+	// res.end("boosh");
 
 	res.statusCode = 200;
 	// res.sendFile();
 	// res.write("Working");
 
-	var options = {
-		root: __dirname,
-		dotfiles: 'deny',
-		headers: {
-			"Content-Type": "text/html",
-			'x-timestamp': Date.now(),
-			'x-sent': true
-		}
-	};
+	// var options = {
+	// 	root: __dirname,
+	// 	dotfiles: 'deny',
+	// 	headers: {
+	// 		"Content-Type": "text/html",
+	// 		'x-timestamp': Date.now(),
+	// 		'x-sent': true
+	// 	}
+	// };
 
-	res.sendFile(FILE, options, function (err) {
-		if (err) {
-			// console.log(err);
-			res.status(err.status).end();
-		}
-		else {
-			console.log('Sent:', FILE);
-			res.end();
-		}
-	});
+	// res.sendFile(FILE, options, function (err) {
+	// 	if (err) {
+	// 		// console.log(err);
+	// 		res.status(err.status).end();
+	// 	}
+	// 	else {
+	// 		console.log('Sent:', FILE);
+	// 		res.end();
+	// 	}
+	// });
 
 
 
 	request(`http://e3ac1346.ngrok.io/concept/${input}`, function (error, response, body) {
-        console.log(JSON.parse(body));
+        res.end(template({"main": JSON.parse(body)}));
     });
-
-
-
 
 };
 
