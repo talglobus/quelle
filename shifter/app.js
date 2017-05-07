@@ -18,7 +18,7 @@ let searchYoutube = (searchFor, cb) => {
     var youTube = new YouTube();
     youTube.setKey('AIzaSyAp-hsvkLWCFTwHbEHKm0z8D_DtQcxDJZA');
     // search youtube for {search_term} with max 5 results
-    youTube.search(searchFor, 20, function(error, result) {
+    youTube.search(searchFor, 50, function(error, result) {
         if (error) {
             cb(error, null);
         } else {
@@ -30,22 +30,34 @@ let searchYoutube = (searchFor, cb) => {
                 let vidKey = item.id.videoId;
                 
 
-                request(`http://video.google.com/timedtext?lang=en&v=${vidKey}`, function (error, response, body) {  
-                    var xml = body;
-                    let res = {
-                        timeArr: [],
-                        textArr: []
-                    };
-                    asyncBack(null, xml);
-                    // parseString(xml, function (err, parseResult) {
-                    //     console.log(4);
-                    //     parseResult["transcript"]["text"].forEach(function(data){
-                    //         res.textArr.push(data["_"]);
-                    //         res.timeArr.push(parseInt(data["$"]["start"]) + parseInt(data["$"]["dur"]));
-                    //     });
-                    // });
-                    // // pass arrays to front end 
-                    // asyncBack(null, res);
+                request(`http://video.google.com/timedtext?lang=en&v=${vidKey}`, function (error, response, body) {
+                    if (body === "") {
+                        asyncBack(null, []);
+                    } else {
+                        var xml = body;
+                        let res = {
+                            timeArr: [],
+                            textArr: []
+                        };
+                        // asyncBack(null, xml);
+                        parseString(xml, function (err, parseResult) {
+                            if (parseResult === undefined) {
+                                asyncBack(null, []);
+                                return;
+                            }
+
+                            async.map(parseResult["transcript"]["text"], (item, parseBack) => {
+                                let rect = {
+                                    textArr: item["_"],
+                                    timeArr: parseFloat(item["$"]["start"]) + parseFloat(item["$"]["dur"])
+                                };
+
+                                parseBack(null, rect);
+                            }, (err, parseResults) => {
+                                asyncBack(null, {key: vidKey, value: parseResults});
+                            });
+                        });
+                    }
                 });
 
                 
@@ -56,7 +68,12 @@ let searchYoutube = (searchFor, cb) => {
                   // All processing will now stop.
                   cb(err, null);
                 } else {
-                  cb(null, asyncResults);
+                    let filteredResults = asyncResults.filter((elem) => {
+                        return (elem.length === undefined);
+                    });
+
+                    console.log(`Response calculation completed. ${filteredResults.length} results.`);
+                    cb(null, filteredResults);
 
                 }
                 // console.log("Done");
