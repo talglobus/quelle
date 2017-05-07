@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Include CSS Assets -->
+        <link href="assets/css/jkit.css" rel="stylesheet">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/animate.css" rel="stylesheet">
+
+    <link href="assets/css/app.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+
+  </head>
+
+  <body>
+
+<!-- Start Header -->
+
+<div id="header">
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+         <a href="index.htm"> <h1>.</h1></a>
+          <div class="nav-collapse collapse">
+            <form class="navbar-form pull-left">
+<div class="input-append">
+  <input class="span3" id="appendedInputButtons" type="text">
+  <button class="btn btn-primary" type="button"><i class="icon-search"></i></button>
+ 
+</div>             
+            </form>
+            <ul class="nav">
+              <li class="active"><a href="#">Movies</a></li>
+              <li><a href="#about">TV Shows</a></li>
+              <li><a href="#contact">Music</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">404 Page</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+         <p class="navbar-text pull-right">
+            <a href="#myModal2"  data-toggle="modal" class="navbar-link">login</a> or <a href="#myModal"  data-toggle="modal" class="navbar-link">register</a>
+            </p> 
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+ </div>
+
+ <!-- End Header -->
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+<div class="page-header">
+  <h4>Goodies <small>Jampacked full of awesome stuff</small></h4>
+</div>
+
+<div class="row-fluid">
+  <div class="span6">
+
+
+<div class="bs-docs-example">
+ <div class="label-e">Checkboxes and radios
+</div>
+
+
+<label class="checkbox inline">
+  <input type="checkbox" id="inlineCheckbox1" value="option1"> Checkbox 1
+</label>
+<label class="checkbox inline">
+  <input type="checkbox" id="inlineCheckbox2" value="option2"> Checkbox 1
+</label>
+<label class="checkbox inline">
+  <input type="checkbox" id="inlineCheckbox3" value="option3"> Checkbox 1
+</label>
+
+
+<label class="checkbox">
+  <input type="checkbox" value="">
+  Option one is this and that—be sure to include why it's great
+</label>
+<hr>
+
+
+ 
+<label class="radio">
+  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+  Option one is this and that—be sure to include why it's great
+</label>
+<label class="radio">
+  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+  Option two can be something else and selecting it will deselect option one
+</label>
+
+
+<label class="radio inline">
+  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+  Option 
+</label>
+<label class="radio inline">
+  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+  Option
+</label>
+
+          </div>
+
+
+<div class="bs-docs-example">
+<div class="label-e">Buttons</div>
+
+<p>
+  <button class="btn btn-large btn-primary" type="button">Large button</button>
+  <button class="btn btn-large" type="button">Large button</button>
+</p>
+<p>
+  <button class="btn btn-primary" type="button">Default button</button>
+  <button class="btn" type="button">Default button</button>
+</p>
+<p>
+  <button class="btn btn-small btn-primary" type="button">Small button</button>
+  <button class="btn btn-small" type="button">Small button</button>
+</p>
+<p>
+  <button class="btn btn-mini btn-primary" type="button">Mini button</button>
+  <button class="btn btn-mini" type="button">Mini button</button>
+</p>
+<button class="btn btn-large btn-block btn-primary" type="button">Block level button</button>
+<button class="btn btn-large btn-block" type="button">Block level button</button>
+
+          </div>
+
+
+
+
+
+
+<div class="bs-docs-example">
+<div class="label-e">CSS Animations by Animate.css</div>
+
+<p>This demo is set up to play the animation once, to reactivate the animations reload the page. demo only shows a handful of animations see <a href="http://daneden.me/animate/">Animate CSS Homepage</a> for more examples.</p>
+
+<p><button onclick="this.className='animated flash btn';" class="btn" type="button">Click me! (flash)</button>
+<button onclick="this.className='animated bounce btn';" class="btn" type="button">Click me! (bounce)</button>
+<button onclick="this.className='animated shake btn';" class="btn" type="button">Click me! (shake)</button>
+<button onclick="this.className='animated tada btn';" class="btn" type="button">Click me! (tada)</button></p>
+
+<p><button onclick="this.className='animated swing btn';" class="btn" type="button">Click me! (swing)</button>
+<button onclick="this.className='animated wobble btn';" class="btn" type="button">Click me! (wobble)</button>
+<button onclick="this.className='animated wiggle btn';" class="btn" type="button">Click me! (wiggle)</button>
+<button onclick="this.className='animated pulse btn';" class="btn" type="button">Click me! (pulse)</button></p>
+
+<p><button onclick="this.className='animated flip btn';" class="btn" type="button">Click me! (flip)</button>
+<button onclick="this.className='animated flipInX btn';" class="btn" type="button">Click me! (flipInX)</button>
+<button onclick="this.className='animated flipOutX  btn';" class="btn" type="button">Click me! (flipOutX)</button>
+<button onclick="this.className='animated flipInY  btn';" class="btn" type="button">Click me! (flipInY)</button></p>
+
+
+<p><button onclick="this.className='animated fadeIn btn';" class="btn" type="button">Click me! (fadeIn)</button>
+<button onclick="this.className='animated fadeInUp  btn';" class="btn" type="button">Click me! (fadeinUp)</button>
+<button onclick="this.className='animated fadeInDown btn';" class="btn" type="button">Click me! (fadeinDown)</button>
+<button onclick="this.className='animated fadeInRight btn';" class="btn" type="button">Click me! (fadeInRight)</button></p>
+
+
+<p><button onclick="this.className='animated fadeInDownBig btn';" class="btn" type="button">Click me! (fadeInDownBig)</button>
+<button onclick="this.className='animated fadeInLeftBig  btn';" class="btn" type="button">Click me! (fadeInLeftBig)</button>
+<button onclick="this.className='animated fadeInRightBig btn';" class="btn" type="button">Click me! (fadeInRightBig)</button>
+<button onclick="this.className='animated fadeInRight btn';" class="btn" type="button">Click me! (fadeInRight)</button></p>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+       
+
+
+
+<div class="bs-docs-example">
+    <div class="label-e">Image Zoom Effect</div>
+
+<img src="assets/img/e-4.jpg" width="640" data-jkit="[zoom]">
+
+</div>
+
+
+
+
+<div class="bs-docs-example">
+<div class="label-e">Parallax</div>
+
+<div class="parallax-container" data-jkit="[parallax:strength=2;axis=both]">
+  <div class="parallax parallax1">Background Layer</div>
+  <div class="parallax parallax2">Middle Layer</div>
+  <div class="parallax parallax3">Foreground Layer</div>
+</div>
+</div>
+
+
+
+
+
+
+  </div>
+
+
+
+
+  <div class="span6">
+
+
+<div class="bs-docs-example">
+    <div class="label-e">Selects</div>
+
+<select class="span4">
+  <option>span4</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+ 
+        <select class="span4">
+  <option>span4</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+           <select class="span4">
+  <option>span4</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+ 
+<hr>
+
+<select class="span6">
+  <option>span6</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+ 
+
+           <select class="span6">
+  <option>span6</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+ 
+
+<hr>
+
+         <select class="span12">
+  <option>span12</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+ 
+</div>
+
+
+<div class="bs-docs-example">
+  <div class="label-e">Image Styles</div>
+
+            <img  onclick="this.className='animated bounce';"  data-src="holder.js/140x140" class="img-rounded" alt="140x140" style="width: 140px; height: 140px;" src="assets/img/e-1.jpg">
+            <img data-src="holder.js/140x140" class="img-circle" alt="140x140" style="width: 140px; height: 140px;" src="assets/img/e-2.jpg">
+            <img data-src="holder.js/140x140" class="img-polaroid" alt="140x140" style="width: 140px; height: 140px;" src="assets/img/e-3.jpg">
+         
+ <hr>
+
+
+</div>
+
+<div class="bs-docs-example">
+  <div class="label-e">Animated Loaders</div>
+
+<div class=" well-transparent lead">
+        <i class="icon-spinner icon-spin icon-2x pull-left branded"></i> loading content...
+      </div>
+      <hr>
+
+      <a class="btn" href="#"><i class="icon-play-circle icon-spin ast branded"></i> Finding stuff...</a>
+
+</div>
+
+
+
+<div class="bs-docs-example">
+<div class="label-e">Lightbox</div>
+
+<a href="assets/img/e-4.jpg"  data-jkit="[lightbox:group=images]" title="Nice image">Open image</a> &nbsp; &nbsp; 
+<a href="http://wrapbootstrap.com" data-jkit="[lightbox]" title="Wrapbootstrap">Open website (iFrame)</a> &nbsp; &nbsp; 
+
+
+
+
+
+
+  </div>
+
+
+
+<div class="bs-docs-example">
+<div class="label-e">Adjust Font Size</div>
+<a class="btn" value="bigger" data-jkit="[fontsize:steps=2;affected=#fs-example p]">Font Size Larger</a>
+<a class="btn"   value="smaller" data-jkit="[fontsize:steps=-2;affected=#fs-example p]">Font Size Smaller</a>
+<div id="fs-example">
+  <h3>Some heading</h3>
+  <p>Some text ...<p>
+  <p>Some more text ...</p>
+</div>
+
+
+
+
+
+  </div>
+
+
+
+<div class="bs-docs-example">
+<div class="label-e">Text Ticker</div>
+<ul data-jkit="[ticker]">
+  <li>Watchopolis is Jampacked with cool features</li>
+  <li>Like this one</li>
+  <li><a href="http://fredibach.ch" target="_blank">The third ticker text</a></li>
+  <li><a href="index.php">Even more text for the ticker</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bs-docs-example tooltip-demo">
+      <div class="label-e">Tooltips</div>
+
+            <ul class="inline">
+              <li><a class="animated bounce" href="#" rel="tooltip" data-placement="top" data-original-title="Tooltip on top">Tooltip on top</a></li>
+              <li><a href="#" rel="tooltip" data-placement="right" data-original-title="Tooltip on right">Tooltip on right</a></li>
+              <li><a href="#" rel="tooltip" data-placement="bottom" data-original-title="Tooltip on bottom">Tooltip on bottom</a></li>
+              <li><a href="#" rel="tooltip" data-placement="left" data-original-title="Tooltip on left">Tooltip on left</a></li>
+            </ul>
+          </div>
+
+
+
+
+
+
+<div class="bs-docs-example tooltip-demo">
+      <div class="label-e">Comment List</div>
+
+      <ul class="comment-list">
+<li class="comment">
+                <a class="pull-left" href="#">
+                  <img class="comment-object img-rounded" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="assets/img/e-6.jpg">
+                </a>
+                <div class="comment-body">
+                  <h4 class="comment-heading">Media heading</h4>
+                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            
+              </li>
+
+
+
+              <li class="comment">
+                <a class="pull-left" href="#">
+                                  <img class="comment-object img-rounded" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="assets/img/e-7.jpg">
+
+                </a>
+                <div class="comment-body">
+                  <h4 class="comment-heading">Media heading</h4>
+                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            
+              </li><li class="comment">
+                <a class="pull-left" href="#">
+                            <img class="comment-object img-rounded" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="assets/img/e-6.jpg">
+
+                </a>
+                <div class="comment-body">
+                  <h4 class="comment-heading">Media heading</h4>
+                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            
+              </li><li class="comment">
+                <a class="pull-left" href="#">
+                                <img class="comment-object img-rounded" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="assets/img/e-7.jpg">
+
+                </a>
+                <div class="comment-body">
+                  <h4 class="comment-heading">Media heading</h4>
+                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            
+              </li><li class="comment">
+                <a class="pull-left" href="#">
+                        <img class="comment-object img-rounded" data-src="holder.js/64x64" alt="64x64" style="width: 40px; height: 40px;" src="assets/img/e-6.jpg">
+
+                </a>
+                <div class="comment-body">
+                  <h4 class="comment-heading">Media heading</h4>
+                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            
+              </li>
+
+</ul>
+
+          </div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+ 
+
+
+
+</div>
+
+
+
+    </div> <!-- /container -->
+
+
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
+
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+     <script src="assets/js/jquery.jkit.1.1.10.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript">
+    $("[rel=tooltip]").tooltip();
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('body').jKit();
+});
+</script>
+
+  </body>
+</html>
